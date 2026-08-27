@@ -222,7 +222,7 @@
         }
 
         /* ============================================================
-                   SOBRE MIM (imagem com altura limitada e proporção)
+                   SOBRE MIM (imagem proporcional ao texto)
                    ============================================================ */
         .sobre-grid {
             display: grid;
@@ -232,8 +232,8 @@
         }
         .sobre-grid img {
             width: 100%;
-            height: 350px;                /* altura fixa para manter proporção */
-            object-fit: contain;          /* mostra a imagem inteira */
+            height: 300px;                /* altura fixa e proporcional */
+            object-fit: contain;          /* imagem inteira, sem cortes */
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             background: var(--cinza-suave);
@@ -330,8 +330,7 @@
         }
 
         /* ============================================================
-                   GALERIA (imagens com a mesma altura e largura,
-                   completas)
+                   GALERIA (imagens com a mesma altura e largura)
                    ============================================================ */
         .galeria-grid {
             display: grid;
@@ -344,7 +343,7 @@
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             transition: var(--transition);
-            height: 300px;                /* altura fixa para igualar */
+            height: 300px;                /* altura fixa */
             background: var(--cinza-suave);
             cursor: pointer;
         }
@@ -364,18 +363,18 @@
         }
 
         /* ============================================================
-                   DEPOIMENTOS (mais compacto, centralizado)
+                   DEPOIMENTOS (lado a lado no desktop, compacto)
                    ============================================================ */
         .depoimentos-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);  /* 2 colunas no desktop */
+            gap: 20px;
             margin: 0 auto;
+            max-width: 900px;
         }
         .depoimento {
             background: var(--lilas-claro);
-            padding: 10px;
+            padding: 12px;
             border-radius: var(--radius);
             border-left: 5px solid var(--lilas);
             transition: var(--transition);
@@ -386,7 +385,6 @@
         }
         .depoimento .foto-depoente {
             width: 100%;
-            max-width: 350px;             /* reduzido para compactar */
             height: auto;
             border-radius: 12px;
             margin: 0 auto 6px;
@@ -605,7 +603,7 @@
                 justify-content: center;
             }
             .sobre-grid img {
-                height: auto;             /* mobile: altura natural */
+                height: auto;
                 max-height: 300px;
             }
             .contato-grid {
@@ -642,17 +640,14 @@
                 gap: 16px;
             }
             .galeria-item {
-                height: 220px;            /* menor em tablets */
+                height: 220px;
             }
             .depoimentos-grid {
-                gap: 14px;
-                padding: 0 8px;
-            }
-            .depoimento {
-                padding: 8px;
+                grid-template-columns: 1fr;   /* 1 coluna no tablet */
+                max-width: 500px;
             }
             .depoimento .foto-depoente {
-                max-width: 300px;
+                max-width: 100%;
             }
         }
 
@@ -675,8 +670,15 @@
                 grid-template-columns: 1fr;
             }
             .galeria-item {
-                height: auto;             /* mobile: altura natural */
+                height: auto;
                 max-height: 300px;
+            }
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .depoimento {
+                padding: 8px;
             }
             .depoimento .foto-depoente {
                 max-width: 100%;
