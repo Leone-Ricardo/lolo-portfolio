@@ -34,7 +34,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--cinza-suave);
-            color: var(--texto);   /* corrigido */
+            color: var(--texto);
             line-height: 1.7;
         }
 
@@ -232,8 +232,8 @@
         }
         .sobre-grid img {
             width: 100%;
-            height: 500px;                /* aumentada para dar destaque */
-            object-fit: contain;          /* imagem inteira, sem cortes */
+            height: 500px;
+            object-fit: contain;
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             background: var(--cinza-suave);
@@ -292,7 +292,7 @@
         }
         .card-img-area {
             width: 100%;
-            height: 140px;
+            aspect-ratio: 4 / 3;          /* proporção da imagem (800x600) */
             background: var(--cinza-suave);
             border-radius: 12px;
             margin-bottom: 15px;
@@ -305,7 +305,7 @@
         .card-img-area img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover;            /* como a proporção é igual, não corta */
             display: block;
         }
         .card .icon {
@@ -877,7 +877,7 @@
             <div class="cards-grid">
                 <div class="card">
                     <div class="card-img-area">
-                        <img src="https://i.postimg.cc/zXspmqD7/taping.jpg" alt="Taping Pré e Pós Parto" />
+                        <img src="https://i.postimg.cc/zXspmqD7/taping.jpg" alt="Taping Pré e Pós Parto" /> 
                     </div>
                     <span class="icon">🎗️</span>
                     <h4>Taping Pré e Pós Parto</h4>
