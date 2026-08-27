@@ -327,8 +327,8 @@
         }
 
         /* ============================================================
-                   GALERIA (CORRIGIDO: imagens completas, sem cortes,
-                   altura menor e melhor adaptação)
+                   GALERIA (CORRIGIDA: imagens completas, sem cortes,
+                   altura automática)
                    ============================================================ */
         .galeria-grid {
             display: grid;
@@ -341,17 +341,14 @@
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             transition: var(--transition);
-            height: 240px;                 /* altura moderada */
-            background: var(--cinza-suave);
+            background: transparent;      /* sem fundo para não criar contraste */
             cursor: pointer;
         }
         .galeria-item img {
             width: 100%;
-            height: 100%;
-            object-fit: contain;           /* sem cortes */
-            transition: var(--transition);
+            height: auto;                  /* altura natural, sem cortes */
             display: block;
-            padding: 10px;                 /* espaçamento interno */
+            transition: var(--transition);
         }
         .galeria-item:hover {
             transform: scale(1.02);
@@ -362,19 +359,19 @@
         }
 
         /* ============================================================
-                   DEPOIMENTOS (CORRIGIDO: empilhados, centralizados,
-                   imagens com boa proporção)
+                   DEPOIMENTOS (CORRIGIDO: imagens completas, sem cortes,
+                   tamanho controlado)
                    ============================================================ */
         .depoimentos-grid {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 20px;
             max-width: 700px;
             margin: 0 auto;
         }
         .depoimento {
             background: var(--lilas-claro);
-            padding: 24px;
+            padding: 12px;
             border-radius: var(--radius);
             border-left: 5px solid var(--lilas);
             transition: var(--transition);
@@ -385,15 +382,13 @@
         }
         .depoimento .foto-depoente {
             width: 100%;
-            max-height: 400px;            /* limite para não ficar gigante */
-            object-fit: contain;
+            max-width: 500px;              /* limite máximo */
+            height: auto;                  /* altura natural, sem cortes */
             border-radius: 12px;
-            margin-bottom: 16px;
+            margin: 0 auto 8px;
             border: none;
-            background: #fff;
-            padding: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .depoimento p {
             font-style: italic;
@@ -572,7 +567,7 @@
         }
 
         /* ============================================================
-                   RESPONSIVO (ajustes mais detalhados)
+                   RESPONSIVO
                    ============================================================ */
         @media (max-width: 768px) {
             .hero-grid {
@@ -638,24 +633,21 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-            .galeria-item {
-                height: 200px; /* menor em tablets */
-            }
             .depoimentos-grid {
-                gap: 20px;
-                padding: 0 12px;
+                gap: 16px;
+                padding: 0 8px;
             }
             .depoimento {
-                padding: 16px;
+                padding: 10px;
             }
             .depoimento .foto-depoente {
-                max-height: 300px; /* menor no tablet */
+                max-width: 400px;        /* reduz em tablets */
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 16px;
+                padding: 0 12px;
             }
             .hero-conteudo h1 {
                 font-size: 1.8rem;
@@ -665,21 +657,14 @@
             }
             .btn-primario,
             .btn-secundario {
-                padding: 12px 24px;
+                padding: 12px 20px;
                 font-size: 0.9rem;
             }
             .galeria-grid {
                 grid-template-columns: 1fr;
             }
-            .galeria-item {
-                height: auto; /* altura automática no mobile para não cortar */
-                max-height: 300px;
-            }
-            .galeria-item img {
-                padding: 8px;
-            }
             .depoimento .foto-depoente {
-                max-height: 250px;
+                max-width: 100%;          /* ocupa toda a largura no mobile */
             }
             .titulo-secao {
                 font-size: 1.6rem;
@@ -729,7 +714,7 @@
             </div>
             <div class="hero-foto">
                 <div class="moldura-foto">
-                    <img src="https://i.postimg.cc/sv8qcwTr/Gemini-Generated-Image-ajk6yajk6yajk6ya.jpg" alt="Foto da Fisioterapeuta Lorrayne Margot" />
+                    <img src="https://i.postimg.cc/sv8qcwTr/Gemini-Generated-Image-ajk6yajk6yajk6ya.jpg" alt="Foto da Fisioterapeuta Lorrayne Margot" width="320" height="320" decoding="async" />
                 </div>
             </div>
         </div>
@@ -742,7 +727,7 @@
         <div class="container">
             <h2 class="titulo-secao">Sobre <span>mim</span></h2>
             <div class="sobre-grid">
-                <img src="https://i.postimg.cc/fbHR49bw/sobre-mim.jpg" alt="Lorrayne em atendimento" />
+                <img src="https://i.postimg.cc/fbHR49bw/sobre-mim.jpg" alt="Lorrayne em atendimento" width="600" height="400" decoding="async" />
                 <div>
                     <h3>Quem é a <span>Lorrayne</span></h3>
                     <p>
@@ -808,10 +793,10 @@
             </p>
             <div class="galeria-grid">
                 <div class="galeria-item">
-                    <img src="https://i.postimg.cc/Hxbr5L20/Taping-na-pratica.jpg" alt="Taping na prática" loading="lazy" />
+                    <img src="https://i.postimg.cc/Hxbr5L20/Taping-na-pratica.jpg" alt="Taping na prática" loading="lazy" decoding="async" width="400" height="300" />
                 </div>
                 <div class="galeria-item">
-                    <img src="https://i.postimg.cc/gcH3xMrp/resultados-tratamento.jpg" alt="Resultados do tratamento" loading="lazy" />
+                    <img src="https://i.postimg.cc/gcH3xMrp/resultados-tratamento.jpg" alt="Resultados do tratamento" loading="lazy" decoding="async" width="400" height="300" />
                 </div>
             </div>
         </div>
@@ -826,16 +811,16 @@
             <p class="subtitulo-secao">Cada história me motiva a continuar.</p>
             <div class="depoimentos-grid">
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/Njdy6MHN/Avaliacao1.jpg" alt="Avaliação 1" loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/Njdy6MHN/Avaliacao1.jpg" alt="Avaliação 1" loading="lazy" decoding="async" width="1024" height="768" />
                 </div>
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/Z5Xmzzkc/Avaliacao2.jpg" alt="Avaliação 2" loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/Z5Xmzzkc/Avaliacao2.jpg" alt="Avaliação 2" loading="lazy" decoding="async" width="1024" height="768" />
                 </div>
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/G2xnDB4f/Avaliacao3.jpg" alt="Avaliação 3" loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/G2xnDB4f/Avaliacao3.jpg" alt="Avaliação 3" loading="lazy" decoding="async" width="1024" height="768" />
                 </div>
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/bYLjNtcS/Avaliacao4.jpg" alt="Avaliação 4" loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/bYLjNtcS/Avaliacao4.jpg" alt="Avaliação 4" loading="lazy" decoding="async" width="1024" height="768" />
                 </div>
             </div>
         </div>
