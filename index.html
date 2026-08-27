@@ -327,7 +327,8 @@
         }
 
         /* ============================================================
-                   GALERIA
+                   GALERIA (CORRIGIDO: imagens completas, sem cortes,
+                   altura menor e melhor adaptação)
                    ============================================================ */
         .galeria-grid {
             display: grid;
@@ -340,15 +341,17 @@
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             transition: var(--transition);
-            aspect-ratio: 4 / 3;
+            height: 240px;                 /* altura moderada */
+            background: var(--cinza-suave);
             cursor: pointer;
         }
         .galeria-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;           /* sem cortes */
             transition: var(--transition);
             display: block;
+            padding: 10px;                 /* espaçamento interno */
         }
         .galeria-item:hover {
             transform: scale(1.02);
@@ -359,12 +362,15 @@
         }
 
         /* ============================================================
-                   DEPOIMENTOS
+                   DEPOIMENTOS (CORRIGIDO: empilhados, centralizados,
+                   imagens com boa proporção)
                    ============================================================ */
         .depoimentos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 24px;
+            max-width: 700px;
+            margin: 0 auto;
         }
         .depoimento {
             background: var(--lilas-claro);
@@ -372,17 +378,22 @@
             border-radius: var(--radius);
             border-left: 5px solid var(--lilas);
             transition: var(--transition);
+            text-align: center;
         }
         .depoimento:hover {
             transform: translateX(4px);
         }
         .depoimento .foto-depoente {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 2px solid var(--lilas);
+            width: 100%;
+            max-height: 400px;            /* limite para não ficar gigante */
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: none;
+            background: #fff;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: block;
         }
         .depoimento p {
             font-style: italic;
@@ -394,6 +405,7 @@
             color: var(--verde-escuro);
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
 
@@ -560,12 +572,13 @@
         }
 
         /* ============================================================
-                   RESPONSIVO
+                   RESPONSIVO (ajustes mais detalhados)
                    ============================================================ */
         @media (max-width: 768px) {
             .hero-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 20px;
             }
             .hero-conteudo p {
                 margin-left: auto;
@@ -575,11 +588,11 @@
                 order: -1;
             }
             .moldura-foto {
-                width: 220px;
-                height: 220px;
+                width: 200px;
+                height: 200px;
             }
             .hero-conteudo h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             .selos-hero {
                 justify-content: center;
@@ -587,15 +600,24 @@
             .sobre-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 24px;
             }
             .sobre-grid .lista-formacao li {
                 justify-content: center;
             }
             .contato-grid {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
             section {
                 padding: 50px 0;
+            }
+            .titulo-secao {
+                font-size: 1.8rem;
+            }
+            .subtitulo-secao {
+                font-size: 0.95rem;
+                margin-bottom: 32px;
             }
             .chamada-domiciliar h3 {
                 font-size: 1.4rem;
@@ -614,18 +636,67 @@
             }
             .galeria-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .galeria-item {
+                height: 200px; /* menor em tablets */
+            }
+            .depoimentos-grid {
+                gap: 20px;
+                padding: 0 12px;
+            }
+            .depoimento {
+                padding: 16px;
+            }
+            .depoimento .foto-depoente {
+                max-height: 300px; /* menor no tablet */
             }
         }
 
         @media (max-width: 480px) {
-            .galeria-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 16px;
             }
             .hero-conteudo h1 {
                 font-size: 1.8rem;
             }
+            .hero-conteudo p {
+                font-size: 1rem;
+            }
+            .btn-primario,
+            .btn-secundario {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            .galeria-item {
+                height: auto; /* altura automática no mobile para não cortar */
+                max-height: 300px;
+            }
+            .galeria-item img {
+                padding: 8px;
+            }
+            .depoimento .foto-depoente {
+                max-height: 250px;
+            }
             .titulo-secao {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+            }
+            .subtitulo-secao {
+                font-size: 0.9rem;
+            }
+            .whatsapp-float {
+                padding: 10px 14px;
+                bottom: 12px;
+                right: 12px;
+            }
+            .whatsapp-float-text {
+                font-size: 0.75rem;
+            }
+            .whatsapp-float-icon {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -651,9 +722,9 @@
                     <span class="selo"><span class="emoji">🤱</span> Pré & Pós-parto</span>
                     <span class="selo"><span class="emoji">💜</span> Toque humanizado</span>
                 </div>
-                <div style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;">
+                <div style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
                     <a href="#contato" class="btn-primario">Agendar atendimento</a>
-                    <a href="https://wa.me/5521999999999?text=Olá,%20Lorrayne!%20Gostaria%20de%20agendar%20um%20atendimento%20ou%20tirar%20uma%20dúvida%20sobre%20a%20fisioterapia.%20Pode%20me%20ajudar?" target="_blank" class="btn-secundario">WhatsApp</a>
+                    <a href="https://wa.me/5521975935942?text=Olá,%20Lorrayne!%20Gostaria%20de%20agendar%20um%20atendimento%20ou%20tirar%20uma%20dúvida%20sobre%20a%20fisioterapia.%20Pode%20me%20ajudar?" target="_blank" class="btn-secundario">WhatsApp</a>
                 </div>
             </div>
             <div class="hero-foto">
@@ -665,7 +736,7 @@
     </section>
 
     <!-- ============================================================
-    SOBRE MIM (atualizado com o texto da Lorrayne)
+    SOBRE MIM
     ============================================================ -->
     <section id="sobre" style="background: var(--branco);">
         <div class="container">
@@ -755,16 +826,16 @@
             <p class="subtitulo-secao">Cada história me motiva a continuar.</p>
             <div class="depoimentos-grid">
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/NL8z3RBx/Avaliacao1.jpg" alt="Avaliacao1" loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/Njdy6MHN/Avaliacao1.jpg" alt="Avaliação 1" loading="lazy" />
                 </div>
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/2bQ0ffR1/Avaliacao2.jpg" alt='Avaliacao2' loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/Z5Xmzzkc/Avaliacao2.jpg" alt="Avaliação 2" loading="lazy" />
                 </div>
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/McRDy8Gy/Avaliacao3.jpg" alt='Avaliacao3' loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/G2xnDB4f/Avaliacao3.jpg" alt="Avaliação 3" loading="lazy" />
                 </div>
                 <div class="depoimento">
-                    <img class="foto-depoente" src="https://i.postimg.cc/jCRXJmYk/Avaliacao4.jpg" alt='Avaliacao4' loading="lazy" />
+                    <img class="foto-depoente" src="https://i.postimg.cc/bYLjNtcS/Avaliacao4.jpg" alt="Avaliação 4" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -841,10 +912,10 @@
                 <div class="contato-info">
                     <p>📍 <strong>Atendimento Domiciliar</strong> · Rio de Janeiro/RJ</p>
                     <p>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/5521975935942" target="_blank">(21) 97593-5942</a></p>
-                    <p>📧 <strong>E-mail:</strong> <a href="mailto:lorrayne@fisio.com">lorrayne_margot123@hotmail.com</a></p>
+                    <p>📧 <strong>E-mail:</strong> <a href="mailto:lorrayne_margot123@hotmail.com">lorrayne_margot123@hotmail.com</a></p>
                     <p>🕐 <strong>Atendimento:</strong> Segunda a Sábado, 8h às 19h</p>
                     <br />
-                    <a href="https://wa.me/5521999999999?text=Olá,%20Lorrayne!%20Gostaria%20de%20agendar%20um%20atendimento%20ou%20tirar%20uma%20dúvida%20sobre%20a%20fisioterapia.%20Pode%20me%20ajudar?" target="_blank" class="btn-primario">Falar no WhatsApp</a>
+                    <a href="https://wa.me/5521975935942?text=Olá,%20Lorrayne!%20Gostaria%20de%20agendar%20um%20atendimento%20ou%20tirar%20uma%20dúvida%20sobre%20a%20fisioterapia.%20Pode%20me%20ajudar?" target="_blank" class="btn-primario">Falar no WhatsApp</a>
                 </div>
                 <div>
                     <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14692.97487388078!2d-43.220188!3d-22.911140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997e5b7b3e9aad%3A0xa4ba6d1c9e3e2b5!2sRio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1647896543210" allowfullscreen="" loading="lazy"></iframe>
@@ -876,7 +947,7 @@
     <!-- ============================================================
     BOTÃO FLUTUANTE DO WHATSAPP
     ============================================================ -->
-    <a href="https://wa.me/5521999999999?text=Olá,%20Lorrayne!%20Gostaria%20de%20agendar%20um%20atendimento%20ou%20tirar%20uma%20dúvida%20sobre%20a%20fisioterapia.%20Pode%20me%20ajudar?"
+    <a href="https://wa.me/5521975935942?text=Olá,%20Lorrayne!%20Gostaria%20de%20agendar%20um%20atendimento%20ou%20tirar%20uma%20dúvida%20sobre%20a%20fisioterapia.%20Pode%20me%20ajudar?"
     target="_blank"
     class="whatsapp-float"
     aria-label="Falar com Lorrayne no WhatsApp">
