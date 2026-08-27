@@ -291,21 +291,17 @@
             border-bottom-color: var(--lilas);
         }
         .card-img-area {
-            width: 100%;
-            aspect-ratio: 4 / 3;          /* proporção da imagem (800x600) */
-            background: var(--cinza-suave);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 1px dashed var(--lilas-escuro);
+             width: 100%;
+    aspect-ratio: 4 / 3;           /* proporção igual à da imagem 800x600 */
+    background: var(--cinza-suave);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden; 
         }
         .card-img-area img {
             width: 100%;
             height: 100%;
-            object-fit: contain;            /* como a proporção é igual, não corta */
+            object-fit: cover;            /* como a proporção é igual, não corta */
             display: block;
         }
         .card .icon {
