@@ -34,7 +34,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--cinza-suave);
-            color: var(--verde-claro);
+            color: var(--texto);   /* corrigido */
             line-height: 1.7;
         }
 
@@ -222,7 +222,7 @@
         }
 
         /* ============================================================
-                   SOBRE MIM (imagem maior e proporcional)
+                   SOBRE MIM
                    ============================================================ */
         .sobre-grid {
             display: grid;
@@ -269,7 +269,7 @@
         }
 
         /* ============================================================
-                   ESPECIALIDADES
+                   ESPECIALIDADES (com área para imagem em cada card)
                    ============================================================ */
         .cards-grid {
             display: grid;
@@ -278,7 +278,7 @@
         }
         .card {
             background: var(--branco);
-            padding: 28px 18px 24px;
+            padding: 20px 16px;
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             text-align: center;
@@ -290,8 +290,26 @@
             box-shadow: 0 16px 32px rgba(107, 143, 113, 0.12);
             border-bottom-color: var(--lilas);
         }
+        .card-img-area {
+            width: 100%;
+            height: 140px;
+            background: var(--cinza-suave);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px dashed var(--lilas-escuro);
+        }
+        .card-img-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
         .card .icon {
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: block;
             margin-bottom: 10px;
         }
@@ -330,7 +348,7 @@
         }
 
         /* ============================================================
-                   GALERIA (imagens com a mesma altura e largura)
+                   GALERIA
                    ============================================================ */
         .galeria-grid {
             display: grid;
@@ -343,14 +361,14 @@
             border-radius: var(--radius);
             box-shadow: var(--sombra);
             transition: var(--transition);
-            height: 300px;                /* altura fixa */
+            height: 300px;
             background: var(--cinza-suave);
             cursor: pointer;
         }
         .galeria-item img {
             width: 100%;
             height: 100%;
-            object-fit: contain;          /* imagem completa, sem cortes */
+            object-fit: contain;
             transition: var(--transition);
             display: block;
         }
@@ -363,11 +381,11 @@
         }
 
         /* ============================================================
-                   DEPOIMENTOS (lado a lado, imagens com altura fixa)
+                   DEPOIMENTOS
                    ============================================================ */
         .depoimentos-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);   /* 2 colunas no desktop */
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin: 0 auto;
             max-width: 900px;
@@ -385,8 +403,8 @@
         }
         .depoimento .foto-depoente {
             width: 100%;
-            height: 250px;                /* altura fixa para padronizar */
-            object-fit: contain;          /* imagem completa */
+            height: 250px;
+            object-fit: contain;
             border-radius: 12px;
             margin: 0 auto 6px;
             border: none;
@@ -571,6 +589,80 @@
         }
 
         /* ============================================================
+                   CARROSSEL DE VÍDEOS
+                   ============================================================ */
+        .video-carrossel-wrapper {
+            position: relative;
+            margin-top: 20px;
+        }
+        .video-carrossel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 10px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .video-item {
+            flex: 0 0 auto;
+            width: 80%;
+            max-width: 600px;
+            scroll-snap-align: center;
+            background: var(--branco);
+            border-radius: var(--radius);
+            box-shadow: var(--sombra);
+            overflow: hidden;
+        }
+        .video-item iframe {
+            width: 100%;
+            height: 315px;
+            border: 0;
+            display: block;
+        }
+        .video-item .video-descricao {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            color: var(--texto);
+            text-align: center;
+        }
+        .carrossel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--branco);
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .carrossel-btn:hover {
+            background: var(--verde-claro);
+        }
+        .carrossel-btn.esquerda {
+            left: 10px;
+        }
+        .carrossel-btn.direita {
+            right: 10px;
+        }
+        @media (max-width: 768px) {
+            .video-item {
+                width: 90%;
+            }
+            .video-item iframe {
+                height: 220px;
+            }
+            .carrossel-btn {
+                font-size: 1.5rem;
+                padding: 6px 10px;
+            }
+        }
+
+        /* ============================================================
                    RESPONSIVO
                    ============================================================ */
         @media (max-width: 768px) {
@@ -645,7 +737,7 @@
                 height: 220px;
             }
             .depoimentos-grid {
-                grid-template-columns: 1fr;   /* 1 coluna no tablet */
+                grid-template-columns: 1fr;
                 max-width: 500px;
             }
             .depoimento .foto-depoente {
@@ -784,14 +876,28 @@
             </p>
             <div class="cards-grid">
                 <div class="card">
+                    <div class="card-img-area">
+                        <!-- INSERIR IMAGEM AQUI: <img src="URL_DA_IMAGEM" alt="Taping Pré e Pós Parto" /> -->
+                    </div>
                     <span class="icon">🎗️</span>
-                    <h4>Taping</h4>
+                    <h4>Taping Pré e Pós Parto</h4>
                     <p>Suporte e estabilidade com a técnica que respeita seus movimentos.</p>
                 </div>
                 <div class="card">
-                    <span class="icon">🤱</span>
-                    <h4>Pré & Pós-parto</h4>
-                    <p>Acompanhamento especializado para o corpo da mulher em cada fase.</p>
+                    <div class="card-img-area">
+                        <!-- INSERIR IMAGEM AQUI: <img src="URL_DA_IMAGEM" alt="Fisioterapia Traumato-ortopedia" /> -->
+                    </div>
+                    <span class="icon">🦴</span>
+                    <h4>Fisioterapia Traumato-ortopedia</h4>
+                    <p>Reabilitação focada em ajudar e auxiliar na recuperação de certas lesões e acidentes.</p>
+                </div>
+                <div class="card">
+                    <div class="card-img-area">
+                        <!-- INSERIR IMAGEM AQUI: <img src="URL_DA_IMAGEM" alt="Terapias Manuais" /> -->
+                    </div>
+                    <span class="icon">🤲</span>
+                    <h4>Terapias Manuais</h4>
+                    <p>Atendimento focado em técnicas de liberação miofascial.</p>
                 </div>
             </div>
 
@@ -819,6 +925,36 @@
                 <div class="galeria-item">
                     <img src="https://i.postimg.cc/gcH3xMrp/resultados-tratamento.jpg" alt="Resultados do tratamento" loading="lazy" decoding="async" width="400" height="300" />
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    VÍDEOS DE ATENDIMENTOS (NOVA SEÇÃO)
+    ============================================================ -->
+    <section id="videos" style="background: var(--branco);">
+        <div class="container">
+            <h2 class="titulo-secao">Vídeos de <span>Atendimentos</span></h2>
+            <p class="subtitulo-secao">
+                Conheça um pouco mais do meu trabalho na prática.
+            </p>
+            <div class="video-carrossel-wrapper">
+                <button class="carrossel-btn esquerda" onclick="moverCarrossel(-1)" aria-label="Anterior">‹</button>
+                <div class="video-carrossel" id="videoCarrossel">
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 1" loading="lazy" allowfullscreen></iframe>
+                        <div class="video-descricao">Sessão de Taping</div>
+                    </div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 2" loading="lazy" allowfullscreen></iframe>
+                        <div class="video-descricao">Reabilitação traumato-ortopédica</div>
+                    </div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 3" loading="lazy" allowfullscreen></iframe>
+                        <div class="video-descricao">Terapia manual</div>
+                    </div>
+                </div>
+                <button class="carrossel-btn direita" onclick="moverCarrossel(1)" aria-label="Próximo">›</button>
             </div>
         </div>
     </section>
@@ -981,6 +1117,15 @@
                 resposta.classList.add('aberto');
                 pergunta.classList.add('aberto');
             }
+        }
+
+        function moverCarrossel(direcao) {
+            const carrossel = document.getElementById('videoCarrossel');
+            const scrollAmount = carrossel.clientWidth * 0.8;
+            carrossel.scrollBy({
+                left: direcao * scrollAmount,
+                behavior: 'smooth'
+            });
         }
     </script>
 
