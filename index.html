@@ -304,9 +304,11 @@
             box-shadow: 0 16px 32px rgba(107, 143, 113, 0.12);
             border-bottom-color: var(--lilas);
         }
+        
+        /* AQUI ESTÁ A MUDANÇA PARA FOTO VERTICAL (3/4) */
         .card-img-area {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 4; 
             background: var(--cinza-suave);
             border-radius: 12px;
             margin-bottom: 15px;
@@ -845,25 +847,31 @@
                     Técnicas integradas para cuidar de você com ciência, arte e acolhimento.
                 </p>
                 <div class="cards-grid">
+                    
+                    <!-- CARD 1: TAPING (Texto redundante removido) -->
                     <div class="card">
                         <div class="card-img-area">
-                            <!-- INSERIR IMAGEM AQUI: <img src="URL_DA_IMAGEM.webp" alt="Taping Pré e Pós Parto" /> -->
+                            <!-- Substitua o link abaixo pela sua imagem com os textos -->
+                            <img src="https://i.postimg.cc/FzCgGxVF/taping-lolo.jpg" alt="Taping Pré e Pós Parto" loading="lazy" decoding="async" />
                         </div>
                         <span class="icon">🎗️</span>
-                        <h4>Taping Pré e Pós Parto</h4>
-                        <p>Suporte e estabilidade com a técnica que respeita seus movimentos.</p>
+                        <p>Sessões personalizadas no conforto da sua casa, focadas na sua recuperação e leveza.</p>
                     </div>
+
+                    <!-- CARD 2: TRAUMATO-ORTOPEDIA -->
                     <div class="card">
                         <div class="card-img-area">
-                            <!-- INSERIR IMAGEM AQUI: <img src="URL_DA_IMAGEM.webp" alt="Fisioterapia Traumato-ortopedia" /> -->
+                            <!-- INSERIR IMAGEM AQUI (Lembrando: imagem vertical!) -->
                         </div>
                         <span class="icon">🦴</span>
                         <h4>Fisioterapia Traumato-ortopedia</h4>
                         <p>Reabilitação focada em ajudar e auxiliar na recuperação de certas lesões e acidentes.</p>
                     </div>
+
+                    <!-- CARD 3: TERAPIAS MANUAIS -->
                     <div class="card">
                         <div class="card-img-area">
-                            <!-- INSERIR IMAGEM AQUI: <img src="URL_DA_IMAGEM.webp" alt="Terapias Manuais" /> -->
+                            <!-- INSERIR IMAGEM AQUI (Lembrando: imagem vertical!) -->
                         </div>
                         <span class="icon">🤲</span>
                         <h4>Terapias Manuais</h4>
@@ -912,7 +920,6 @@
                     <button class="carrossel-btn esquerda" onclick="moverCarrossel(-1)" aria-label="Anterior">‹</button>
                     <div class="video-carrossel" id="videoCarrossel">
                         <div class="video-item">
-                            <!-- Lembre-se de usar o link de incorporação (/embed/) do YouTube -->
                             <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 1" loading="lazy" allowfullscreen></iframe>
                             <div class="video-descricao">Sessão de Taping</div>
                         </div>
@@ -1088,7 +1095,6 @@
         // Função para mover o carrossel de vídeos
         function moverCarrossel(direcao) {
             const carrossel = document.getElementById('videoCarrossel');
-            // Calcula a rolagem baseada na largura da tela (mais responsivo)
             const scrollAmount = window.innerWidth > 768 ? 400 : 250; 
             
             carrossel.scrollBy({
