@@ -305,7 +305,6 @@
             border-bottom-color: var(--lilas);
         }
         
-        /* AQUI ESTÁ A MUDANÇA PARA FOTO VERTICAL (3/4) */
         .card-img-area {
             width: 100%;
             aspect-ratio: 3 / 4; 
@@ -397,7 +396,7 @@
         }
 
         /* ============================================================
-           CARROSSEL DE VÍDEOS
+           CARROSSEL DE VÍDEOS (Atualizado para Tag nativa de vídeo)
            ============================================================ */
         .video-carrossel-wrapper {
             position: relative;
@@ -422,11 +421,13 @@
             box-shadow: var(--sombra);
             overflow: hidden;
         }
-        .video-item iframe {
+        .video-item video {
             width: 100%;
             height: 315px;
             border: 0;
             display: block;
+            object-fit: cover;
+            background-color: #000; /* Fundo preto para as bordas do vídeo */
         }
         .video-item .video-descricao {
             padding: 10px 15px;
@@ -709,8 +710,9 @@
             .video-item {
                 width: 90%;
             }
-            .video-item iframe {
-                height: 220px;
+            /* Redução do vídeo no celular para não engolir a tela */
+            .video-item video {
+                height: 220px; 
             }
             .carrossel-btn {
                 font-size: 1.5rem;
@@ -799,6 +801,7 @@
                 </div>
                 <div class="hero-foto">
                     <div class="moldura-foto">
+                        <!-- Imagem do Hero -->
                         <img src="https://i.postimg.cc/sv8qcwTr/Gemini-Generated-Image-ajk6yajk6yajk6ya.webp" alt="Foto da Fisioterapeuta Lorrayne Margot" width="320" height="320" decoding="async" />
                     </div>
                 </div>
@@ -840,7 +843,7 @@
         <!-- ============================================================
         ESPECIALIDADES
         ============================================================ -->
-        <section id="especialidades">
+         <section id="especialidades">
             <div class="container">
                 <h2 class="titulo-secao">Minhas <span>Especialidades</span></h2>
                 <p class="subtitulo-secao">
@@ -887,6 +890,7 @@
             </div>
         </section>
 
+
         <!-- ============================================================
         GALERIA
         ============================================================ -->
@@ -908,7 +912,7 @@
         </section>
 
         <!-- ============================================================
-        VÍDEOS DE ATENDIMENTOS
+        VÍDEOS DE ATENDIMENTOS (Atualizado)
         ============================================================ -->
         <section id="videos" class="bg-branco">
             <div class="container">
@@ -919,17 +923,43 @@
                 <div class="video-carrossel-wrapper">
                     <button class="carrossel-btn esquerda" onclick="moverCarrossel(-1)" aria-label="Anterior">‹</button>
                     <div class="video-carrossel" id="videoCarrossel">
+                        
+                        <!-- VÍDEO 1 -->
                         <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 1" loading="lazy" allowfullscreen></iframe>
-                            <div class="video-descricao">Sessão de Taping</div>
+                            <!-- Substitua o link no src pelo caminho do seu vídeo em .mp4 -->
+                            <video controls preload="metadata">
+                                <source src="https://files.catbox.moe/fe0vdc.mp4" type="video/mp4">
+                                Seu navegador não suporta a tag de vídeo.
+                            </video>
+                            <div class="video-descricao">Sessão de fortalecimento muscular</div>
                         </div>
+
+                        <!-- VÍDEO 2 -->
                         <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 2" loading="lazy" allowfullscreen></iframe>
-                            <div class="video-descricao">Reabilitação traumato-ortopédica</div>
+                            <!-- Substitua o link no src pelo caminho do seu vídeo em .mp4 -->
+                            <video controls preload="metadata">
+                                <source src="https://files.catbox.moe/ruvd0o.mp4" type="video/mp4">
+                                Seu navegador não suporta a tag de vídeo.
+                            </video>
+                            <div class="video-descricao">Ventosaterapia</div>
                         </div>
+
+                        <!-- VÍDEO 3 -->
                         <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" title="Vídeo de atendimento 3" loading="lazy" allowfullscreen></iframe>
+                            <!-- Substitua o link no src pelo caminho do seu vídeo em .mp4 -->
+                            <video controls preload="metadata">
+                                <source src="https://files.catbox.moe/18rtsg.mp4" type="video/mp4">
+                                Seu navegador não suporta a tag de vídeo.
+                            </video>
                             <div class="video-descricao">Terapia manual</div>
+                        </div>
+                         <div class="video-item">
+                            <!-- Substitua o link no src pelo caminho do seu vídeo em .mp4 -->
+                            <video controls preload="metadata">
+                                <source src="https://files.catbox.moe/x05j6i.mp4" type="video/mp4">
+                                Seu navegador não suporta a tag de vídeo.
+                            </video>
+                            <div class="video-descricao">Fortalecimento muscular</div>
                         </div>
                     </div>
                     <button class="carrossel-btn direita" onclick="moverCarrossel(1)" aria-label="Próximo">›</button>
@@ -1041,7 +1071,7 @@
                         </a>
                     </div>
                     <div>
-                        <!-- Mapa de Campo Grande (Embed do Google Maps) -->
+                        <!-- Mapa de Campo Grande -->
                         <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117578.47285642533!2d-43.63943362141512!3d-22.905658117765176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9be432d9dbf45d%3A0xeab4e1d75f284c00!2sCampo%20Grande%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -1076,7 +1106,6 @@
     SCRIPTS
     ============================================================ -->
     <script>
-        // Função para abrir/fechar as perguntas do FAQ
         function toggleFaq(elemento) {
             const resposta = elemento.nextElementSibling;
             const seta = elemento.querySelector('.seta');
@@ -1092,7 +1121,6 @@
             }
         }
 
-        // Função para mover o carrossel de vídeos
         function moverCarrossel(direcao) {
             const carrossel = document.getElementById('videoCarrossel');
             const scrollAmount = window.innerWidth > 768 ? 400 : 250; 
